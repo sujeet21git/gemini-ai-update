@@ -1,0 +1,30 @@
+{
+  "command-logger": {
+    "PostToolUse": [
+      {
+        "matcher": "run_command",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/home/Sujeet-work/.gemini/config/scripts/log_command.js",
+            "timeout": 5
+          }
+        ]
+      }
+    ]
+  },
+  "destructive-and-boundary-gate": {
+    "PreToolUse": [
+      {
+        "matcher": "run_command|write_to_file|replace_file_content|multi_replace_file_content|view_file|list_dir|grep_search",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/home/Sujeet-work/.gemini/config/scripts/safety_check.js",
+            "timeout": 5
+          }
+        ]
+      }
+    ]
+  }
+}
